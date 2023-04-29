@@ -2,7 +2,7 @@ import { useLocalStorageState } from '../utils';
 import { calculateNextValue, calculateStatus, calculateWinner } from '../api';
 import { Board } from './Board';
 
-function Game() {
+const Game = () => {
 	const [history, setHistory] = useLocalStorageState('history', [
 		Array(9).fill(null),
 	]);
@@ -13,7 +13,7 @@ function Game() {
 	const winner = calculateWinner(currentSquares);
 	const status = calculateStatus(winner, currentSquares, nextValue);
 
-	function selectSquare(square: number) {
+	const selectSquare = (square: number) => {
 		if (winner || currentSquares[square]) {
 			return;
 		}
@@ -23,12 +23,12 @@ function Game() {
 		squaresCopy[square] = nextValue;
 		setHistory([...newHistory, squaresCopy]);
 		setCurrentStep(newHistory.length);
-	}
+	};
 
-	function restart() {
+	const restart = () => {
 		setHistory([Array(9).fill(null)]);
 		setCurrentStep(0);
-	}
+	};
 
 	const moves = history.map((stepSquares: string[], step: number) => {
 		const buttonDescription = step === 0 ? 'game start' : `move #${step}`;
@@ -61,6 +61,6 @@ function Game() {
 			</div>
 		</div>
 	);
-}
+};
 
 export { Game };
