@@ -30,11 +30,11 @@ function Game() {
 		setCurrentStep(0);
 	}
 
-	const moves = history.map((stepSquares: any, step: number) => {
+	const moves = history.map((stepSquares: string[], step: number) => {
 		const buttonDescription = step === 0 ? 'game start' : `move #${step}`;
 		const isCurrentStep = step === currentStep;
 		return (
-			<li key={step}>
+			<li style={{ marginBottom: '3px' }} key={step}>
 				<button
 					className="button-8"
 					disabled={isCurrentStep}
@@ -49,13 +49,14 @@ function Game() {
 	return (
 		<div className="game">
 			<div className="game-board">
+				<div>{status}</div>
 				<Board onClick={selectSquare} squares={currentSquares} />
-				<button className="restart button-8" onClick={restart}>
+				<button name="restart" className="restart button-8" onClick={restart}>
 					Restart
 				</button>
 			</div>
 			<div className="game-info">
-				<div>{status}</div>
+				<div>Game history</div>
 				<ol>{moves}</ol>
 			</div>
 		</div>

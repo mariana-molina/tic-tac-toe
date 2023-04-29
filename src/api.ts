@@ -1,7 +1,7 @@
 export const calculateStatus = (
-	winner: any,
-	squares: any[],
-	nextValue: any
+	winner: null | string,
+	squares: string[],
+	nextValue: string
 ) => {
 	return winner
 		? `Winner: ${winner}`
@@ -10,11 +10,11 @@ export const calculateStatus = (
 		: `Next player: ${nextValue}`;
 };
 
-export const calculateNextValue = (squares: any[]) => {
+export const calculateNextValue = (squares: string[]) => {
 	return squares.filter(Boolean).length % 2 === 0 ? 'X' : 'O';
 };
 
-export const calculateWinner = (squares: any[]) => {
+export const calculateWinner = (squares: string[]) => {
 	const lines = [
 		[0, 1, 2],
 		[3, 4, 5],

@@ -1,10 +1,10 @@
 type BoardProps = {
-	squares: any[];
+	squares: string[];
 	onClick: (squares: number) => void;
 };
 
 function Board({ squares, onClick }: BoardProps) {
-	function renderSquare(i: any) {
+	function renderSquare(i: number) {
 		return (
 			<button className="square" onClick={() => onClick(i)}>
 				{squares[i]}
@@ -12,7 +12,7 @@ function Board({ squares, onClick }: BoardProps) {
 		);
 	}
 	return (
-		<div>
+		<div style={{ marginTop: '1em' }}>
 			<div className="board-row">
 				{renderSquare(0)}
 				{renderSquare(1)}
